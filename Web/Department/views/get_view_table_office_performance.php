@@ -17,7 +17,7 @@
             <div class="panel-body" style="color: black">
                 <div class="tabbable-custom">
                     <p style="font-size: 18px"> <i class="fa fa-table"></i>&nbsp;
-                    Details for Document Ticket Processing Transactions per Office and User</p>
+                    Details for Document Ticket Processed Transactions per Office and User</p>
                     <div class="row" style="background-color: #6e6e6e; padding: 1px; margin-bottom: 10px"></div>
 
                     <ul class="nav nav-tabs" style="font-size: 14px;">
@@ -33,24 +33,13 @@
                     </ul>
                     <div class="tab-content">
                         <div id="Department" class="tab-pane active">
-                            <table class="table table-condensed mbn">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <h4 style="font-weight: bold">Account Username:</h4>
-                                        </td>
-                                        <td>
-                                            <h4><?php echo $acc_username; ?></h4>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <?php include("get_view_table_countper_department.php");?>
                         </div>
                         <div id="staff" class="tab-pane">
-                           
+                            <?php include("get_view_table_countper_user.php");?>
                         </div>
                         <div id="topics" class="tab-pane">
-                           
+                            <?php include("get_view_table_countper_topics.php");?>
                         </div>
                     </div>
                 </div>

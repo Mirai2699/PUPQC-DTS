@@ -72,40 +72,94 @@
                                                                enableMouseTracking: true
                                                            }
                                                        },
-                                                       series: [{
-                                                           name: 'Monthly Expenses',
-                                                           data: [
-                                                                     
-                                                                      <?php
-                                                                         include("../db.php");  
-                                                                         $curryear = date('Y');
-                                                                         $view_queryR12 = mysqli_query($connection,"SELECT IFNULL(SUM(ES_TotalAmount),0.00) AS R12 FROM srg_fms_t_expenses_summary 
-                                                                                            WHERE ES_DateSpent BETWEEN '$curryear-12-01' AND '$curryear-12-30' ");
-                                                                                            while($row = mysqli_fetch_assoc($view_queryR12))
-                                                                                            {   
-                                                                                               
-                                                                                               echo($row["R12"]);
-                                                                                            }
-                                                                      ?>
-                                                                  ]
-                                                       },
-                                                       {
-                                                           name: 'Monthly Income',
-                                                           data: [
-                                                                     <?php
-                                                                         include("../db.php");  
-                                                                         $curryear = date('Y');
-                                                                         $view_queryR1 = mysqli_query($connection,"SELECT IFNULL(SUM(IC_Amount),0.00) AS R1 FROM srg_fms_t_income 
-                                                                                            WHERE IC_DateEntry BETWEEN '$curryear-01-01' AND '$curryear-02-01' ");
-                                                                                            while($row = mysqli_fetch_assoc($view_queryR1))
-                                                                                            {   
-                                                                                               
-                                                                                               echo($row["R1"]);
-                                                                                            }
-                                                                      ?>
-                                                                     
-                                                                  ]
-                                                       }]
+                                                       series: [
+                                                    //requisition types
+                                                    <?php
+                                                          //$temp = "null";
+                                                         $view_query = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_doctype, docutype_desc FROM `t_document_track_history` AS DOCUHIS
+                                                                                                 INNER JOIN `r_document_type` AS DOCTYPE
+                                                                                                 ON DOCUHIS.docu_tr_his_doctype = DOCTYPE.docutype_ID
+                                                                                                ");
+                                                         while($row = mysqli_fetch_assoc($view_query))
+                                                             {   
+                                                                 $InvCategory = $row["docu_tr_his_doctype"];
+                                                                 $cat_name = $row["docutype_desc"];
+                                                    ?>
+                                                    {
+                                                   
+                                                      name: '<?php echo $cat_name?>',
+                                                      id: 'FOR<?php echo $InvCategory?>',
+                                                      type:'line',
+                                                      data: [
+
+
+                                                            {
+                                                                name: 'Created',
+                                                                y: <?php
+                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_createdby = '$userID'
+                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
+                                                                    
+                                                                    $total_count1 = mysqli_num_rows($view_create);
+                                                                    echo $total_count1;
+
+                                                                   ?>
+                                                            },
+                                                            {
+                                                                name: 'Forwarded',
+                                                                y: <?php
+                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_sender = '$userID'
+                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
+                                                                    
+                                                                    $total_count2 = mysqli_num_rows($view_create);
+                                                                    echo $total_count2;
+
+                                                                   ?>
+                                                            },
+                                                            {
+                                                                name: 'Received',
+                                                                y: <?php
+                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_receiver = '$userID'
+                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
+                                                                    
+                                                                    $total_count3 = mysqli_num_rows($view_create);
+                                                                    echo $total_count3;
+
+                                                                   ?>
+                                                            },
+                                                            {
+                                                                name: 'Closed',
+                                                                y: <?php
+                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_closedby = '$userID'
+                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
+                                                                    
+                                                                    $total_count4 = mysqli_num_rows($view_create);
+                                                                    echo $total_count4;
+
+                                                                   ?>
+                                                            },
+                                                            {
+                                                                name: 'Re-Opened',
+                                                                y: <?php
+                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_reopenedby = '$userID'
+                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
+                                                                    
+                                                                    $total_count5 = mysqli_num_rows($view_create);
+                                                                    echo $total_count5;
+
+                                                                   ?>
+                                                            },
+                                                        
+                                                      ]
+                                               
+                                                }, <?php
+                                                }
+                                                ?>
+                                              ]
 
                                                    });
                                                </script>             
