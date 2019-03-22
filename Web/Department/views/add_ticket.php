@@ -157,8 +157,8 @@
                          </div>
                           <div class="col-md-12">
                            <div class="row" id="SPACER" style="margin-top: 10px; "></div>
-                           <label><b>Signatories:</b></label><small style="color:red">&nbsp;&nbsp;&nbsp;*This field is required.</small>
-                           <input id="signatory" type="text" name="docu_signatory" class="form-control" placeholder="Signatories..." required>
+                           <label><b>Signatory:</b></label><small style="color:red">&nbsp;&nbsp;&nbsp;*This field is required.</small>
+                           <input id="signatory" type="text" name="docu_signatory" class="form-control" placeholder="Add Signatory" required>
                          </div>
                          <!--BUTTON DIVISION-->
 

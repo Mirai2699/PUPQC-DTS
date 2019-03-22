@@ -225,15 +225,15 @@
                             }
                             else if($docu_action == 'Received')
                             {
-                              echo  'Ticket '.$docu_action.' by Staff.';
+                              echo  'Ticket '.$docu_action.'.';
                             }
                             else if($docu_action == 'Closed')
                             {
-                              echo  'Ticket '.$docu_action.' by Staff. <br><b style="color: black">"'.$docu_tr_closing_remarks.'"</b>';
+                              echo  'Ticket '.$docu_action.'. <br><b style="color: black">"'.$docu_tr_closing_remarks.'"</b>';
                             }
                             else if($docu_action == 'Re-Opened')
                             {
-                             echo  'Ticket '.$docu_action.' by Staff. <br>';
+                             echo  'Ticket '.$docu_action.'. <br>';
                             }
                          
                 echo      '</td>';

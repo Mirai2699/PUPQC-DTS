@@ -121,13 +121,13 @@
                                           Show More Details
                                         </button>
                                         <?php 
-                                              $document_stat = mysqli_query($connection,"SELECT docu_tr_status, docu_tr_closedby FROM `t_document_track` 
-                                                                                      WHERE docu_tr_ID = '$docu_tr_ID' ");
+                                              $document_stat = mysqli_query($connection,"SELECT docu_tr_status, docu_tr_sender,           docu_tr_closedby FROM `t_document_track` 
+                                                                                      WHERE docu_tr_ID = '$docu_tr_ID'  ");
                                                     $action = mysqli_fetch_array($document_stat);
                                                     $last_stat = $action[0];
                                                     $docu_tr_closedby = $action['docu_tr_closedby'];
 
-                                                    if($last_stat == "OPEN")
+                                                    if($last_stat == "OPEN" && $docu_tr_sender != $userID)
                                                     {
                                                      echo'
                                                             <a data-toggle="modal" href="#closing'.$docu_tr_ID.'" class="btn btn-danger" style="margin-top: 5px">
@@ -444,7 +444,7 @@
                                    echo'
                                           <div class="col-md-12" style="border: 1px solid; margin-bottom: 10px; margin-top: 10px">
                                             <div class="panel" style="margin:10px">
-                                              <p style="font-size: 20px; color:black">You have already forwaded the message.</p>
+                                              <p style="font-size: 20px; color:black">You have already transferred the ticket.</p>
                                             </div>
                                           </div>
                                           <div class="col-md-12" style="display: none; border: 1px solid; margin-bottom: 10px; margin-top: 10px">

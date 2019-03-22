@@ -30,96 +30,196 @@
 
             <!--START DASHBOARD-->
             <section class="main-content">
-                <!--LINE CHART and TABLE-->
-                <div class="col-md-12">   
+                <!--PERCENTAGES AND RATING PART-->
+                <div class="col-md-6">
                     <div class="col-md-12">
-                        <div class="panel">
-                            <div class="panel-heading" style="background-color: #262626; color: white" >
-                                <h3 class="panel-title" style="margin:1px">
-                                    <i class="fa fa-bar-chart-o"></i>&nbsp;
-                                    Document Types and Their Corresponding Transactions
-                                </h3>
-                            </div>
-
-                            <div class="row">
-                                <div class="panel-body">
-                                    <div class="demo-container">
-                                        <div class="col-md-12">
-                                            <div id="daterep" style="width: 99%; height: 400px;"></div>
-                                               <script type="text/javascript">
-
-                                                   Highcharts.chart('daterep', {
-                                                       chart: {
-                                                           type: 'line'
-                                                       },
-                                                       title: {
-                                                           text: 'Monthly Financial Transactions For the Year <?php echo date("Y")?>'
-                                                       },
-                                                       xAxis: {
-                                                           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                                                       },
-                                                       yAxis: {
-                                                           title: {
-                                                               text: 'Total Amount in Peso'
-                                                           }
-                                                       },
-
-                                                       plotOptions: {
-                                                           line: {
-                                                               dataLabels: {
-                                                                   enabled: true
-                                                               },
-                                                               enableMouseTracking: true
-                                                           }
-                                                       },
-                                                       series: [{
-                                                           name: 'Monthly Expenses',
-                                                           data: [
-                                                                     
-                                                                      <?php
-                                                                         include("../db.php");  
-                                                                         $curryear = date('Y');
-                                                                         $view_queryR12 = mysqli_query($connection,"SELECT IFNULL(SUM(ES_TotalAmount),0.00) AS R12 FROM srg_fms_t_expenses_summary 
-                                                                                            WHERE ES_DateSpent BETWEEN '$curryear-12-01' AND '$curryear-12-30' ");
-                                                                                            while($row = mysqli_fetch_assoc($view_queryR12))
-                                                                                            {   
-                                                                                               
-                                                                                               echo($row["R12"]);
-                                                                                            }
-                                                                      ?>
-                                                                  ]
-                                                       },
-                                                       {
-                                                           name: 'Monthly Income',
-                                                           data: [
-                                                                     <?php
-                                                                         include("../db.php");  
-                                                                         $curryear = date('Y');
-                                                                         $view_queryR1 = mysqli_query($connection,"SELECT IFNULL(SUM(IC_Amount),0.00) AS R1 FROM srg_fms_t_income 
-                                                                                            WHERE IC_DateEntry BETWEEN '$curryear-01-01' AND '$curryear-02-01' ");
-                                                                                            while($row = mysqli_fetch_assoc($view_queryR1))
-                                                                                            {   
-                                                                                               
-                                                                                               echo($row["R1"]);
-                                                                                            }
-                                                                      ?>
-                                                                     
-                                                                  ]
-                                                       }]
-
-                                                   });
-                                               </script>             
-                                        </div>
+                        <div class="panel panel-stat stat-primary" style="background-color: #000099">
+                            <div class="panel-body">
+                                <?php
+                                    include("get_docuticket_count.php");
+                                ?>
+                                <div class="row mbxl">
+                                    <div class="col-xs-8"><span class="stat-title">Total Number of Document Tickets Tracked in your Account</span>
+                                        <h2 class="man"><?php echo $total_count?></h2>
+                                    </div>
+                                    <div class="col-xs-4"><i class="fa fa-file-text" style="margin-top: 20px"></i></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-3"><span class="stat-title">Created</span>
+                                        <h4 class="man"><?php echo $create_count?></h4>
+                                    </div>
+                                    <div class="col-xs-3"><span class="stat-title">Forwarded</span>
+                                        <h4 class="man"><?php echo $sent_count?></h4>
+                                    </div>
+                                    <div class="col-xs-3"><span class="stat-title">Closed</span>
+                                        <h4 class="man"><?php echo $closed_count?></h4>
+                                    </div>
+                                    <div class="col-xs-3"><span class="stat-title">Re-Opened</span>
+                                        <h4 class="man"><?php echo $reopen_count?></h4>
                                     </div>
                                 </div>
                             </div>
-                            <!--TABLE-->
-                            <?php include("get_view_table_office_performance.php"); ?>
-                            <!--TABLE-->
                         </div>
                     </div>
-                </div> 
-                <!--LINE CHART AND TABLE-->
+                    <div class="col-md-12">
+                        <div class="panel panel-stat stat-success" style="background-color: #006600">
+                            <div class="panel-body">
+                                <?php
+                                    include("get_user_performance.php");
+                                ?>
+                                <div class="row mbxl">
+                                    <div class="col-xs-8"><span class="stat-title">Average Response Time Rating in Processing Documents</span>
+                                        <h2 class="man"><?php echo $res_ave.'%'?></h2>
+                                        <small style="color: white">Average Response Speed</small>
+                                        <h4 class="man" ><?php echo $eval_stmnt?></h4>
+                                        <h5><a data-toggle="modal" href="#user_perf_details">>> Click to see more details <<</a></h5>
+                                    </div>
+                                    <div class="col-xs-4"><i class="fa fa-dashboard" style="margin-top: 20px"></i></div>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-xs-4"><span class="stat-title">Daily</span>
+                                        <h4 class="man">4%</h4>
+                                    </div>
+                                    <div class="col-xs-4"><span class="stat-title">Weekly</span>
+                                        <h4 class="man">4%</h4>
+                                    </div>
+                                    <div class="col-xs-4"><span class="stat-title">Monthly</span>
+                                        <h4 class="man">4%</h4>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-stat stat-default" style="background-color: #004466">
+                            <div class="panel-body">
+                                <?php
+                                    include("get_response_time.php");
+                                ?>
+                                <div class="row mbxl">
+                                    <div class="col-xs-8"><span class="stat-title">Average Response Time and Its Evaluation</span>
+                                        <h2 class="man"><?php echo $DA_RT_average ?> mins</h2>
+                                        <small style="color: white">Response Time Measured in Minutes</small>
+                                        <h4 class="man" ><?php echo $RT_desc?></h4>
+                                        <h5><a data-toggle="modal" href="#response_time">>> Click to see more details <<</a></h5>
+                                    </div>
+                                    <div class="col-xs-4"><i class="fa fa-clock-o" style="margin-top: 20px"></i></div>
+                                </div>
+                                <!-- <div class="row">
+                                    <div class="col-xs-4"><span class="stat-title">Daily</span>
+                                        <h4 class="man">4%</h4>
+                                    </div>
+                                    <div class="col-xs-4"><span class="stat-title">Weekly</span>
+                                        <h4 class="man">4%</h4>
+                                    </div>
+                                    <div class="col-xs-4"><span class="stat-title">Monthly</span>
+                                        <h4 class="man">4%</h4>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- NUMBER OF DOCUMENT TYPE CREATED PART-->
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-heading" style="background-color: #262626; color: white" >
+                            <h3 class="panel-title" style="margin:1px">
+                                <i class="fa fa-bar-chart-o"></i>&nbsp;
+                                Number of Document Types Produced by Your Account
+                            </h3>
+                        </div>
+                        <div class="row">
+                            <div class="panel-body">
+                                <div class="demo-container">
+                                    <div class="col-md-12">
+                                        <div id="groupregion" class="flotChart"></div>
+                                        <script type="text/javascript">
+                                            Highcharts.chart('groupregion', {
+                                            chart: {
+                                                type: 'column'
+                                            },
+                                            title: {
+                                                text: 'Document Types Created Tickets'
+                                            },
+                                            
+                                            xAxis: {
+                                                type: 'category',
+                                                title: {
+                                                    text: null
+                                                },
+                                                min: 0,
+                                                scrollbar: {
+                                                    enabled: true
+                                                },
+                                                tickLength: 0
+                                            },
+                                            yAxis: {
+                                                title: {
+                                                    text: null
+                                                }
+                                            },
+                                            legend: {
+                                                enabled: false
+                                            },
+                                            plotOptions: {
+                                                series: {
+                                                    borderWidth: 0,
+                                                    dataLabels: {
+                                                        enabled: true,
+                                                        format: '{point.y:.0f}'
+                                                    }
+                                                }
+                                            },
+
+                                            tooltip: {
+                                                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                                                pointFormat: '<span style="color:{point.color}">{point.name}</span>:Total of  <b>{point.y:.0sf}</b><br/>'
+                                            },
+
+                                            series: [
+                                                {
+                                                    name: "Document Type Created:",
+                                                    colorByPoint: true,
+                                                    data: [
+                                                        <?php
+                                                            $view_query = mysqli_query($connection,"SELECT * FROM `t_document_track` AS DOCU
+                                                                                                      INNER JOIN `r_document_type` AS DOCUTYPE
+                                                                                                      ON DOCU.docu_tr_doctype = DOCUTYPE.docutype_ID
+                                                                                                  ");
+                                                                while($row = mysqli_fetch_assoc($view_query))
+                                                                    {   
+                                                                        $bygrp = $row["docu_tr_doctype"];
+                                                                        $name = $row["docutype_desc"];
+                                                                        //$InvQty = $row["Quantity"];
+                                                        ?> 
+                                                            {
+                                                                name: '<?php echo $name?>',
+                                                                y: <?php
+                                                                $view_query2 = mysqli_query($connection,"SELECT COUNT(docu_tr_doctype) AS rate FROM `t_document_track` WHERE docu_tr_doctype = '$bygrp' and  docu_tr_createdby = '$userID'");
+                                                                    while($row2 = mysqli_fetch_assoc($view_query2))
+                                                                        {   
+                                                                            $InvQty = $row2["rate"];
+                                                                            echo ($InvQty);
+                                                                        }
+                                                                   ?>,
+                                                                drilldown: '<?php echo $bygrp ?>',
+                                                            },
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                    ]
+                                                }
+                                            ]
+                                        });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!--NUMBER OF DOCUMENT TRANSACTED PART-->
 
                 <div class="col-md-12">   
                     <div class="col-md-12">

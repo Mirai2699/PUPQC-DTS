@@ -50,6 +50,7 @@
                    $docu_tr_type = $row['docu_tr_his_doctype'];
                    $docutype_desc = $row['docutype_desc'];
                    $source_desc = $row["source_desc"];
+
                    $priority_desc = $row["priority_desc"];
                
                    //Date Entities
@@ -60,22 +61,22 @@
 
 
                    //For CREATOR (variables not renamed)
-                   $getsender = mysqli_query($connection, "SELECT * FROM `t_employees` AS EMP 
+                   $getcreator = mysqli_query($connection, "SELECT * FROM `t_employees` AS EMP 
                                                                    INNER JOIN `r_office` AS OFF
                                                                    ON EMP.emp_office = OFF.office_ID
                                                            WHERE EMP.emp_ID = '$docu_tr_createdby'");
-                   while($sender_row = mysqli_fetch_array($getsender))
+                   while($creator_row = mysqli_fetch_array($getcreator))
                    {
 
                      //Office Naming
-                     $sender_office_name = $sender_row["office_name"];
+                     $creator_office_name = $creator_row["office_name"];
 
                      //Employee Naming
-                     $sender_fname = $sender_row["emp_firstname"];
-                     $sender_lname = $sender_row["emp_lastname"];
-                     $sender_position = $sender_row["emp_position"];
-                     $sender_compname = $sender_fname.' '.$sender_lname;
-                     $sender_disp = $sender_compname.', '.$sender_position;
+                     $creator_fname = $creator_row["emp_firstname"];
+                     $creator_lname = $creator_row["emp_lastname"];
+                     $creator_position = $creator_row["emp_position"];
+                     $creator_compname = $creator_fname.' '.$creator_lname;
+                     $creator_disp = $creator_compname.', '.$creator_position;
                    }
 
                    
@@ -87,7 +88,7 @@
                         <td style=""> '.$docutype_desc.' </td>  
                         <td style=""> '.$docu_tr_subject.' </td>
                         <td style=""> '.$docu_tr_desc.' </td>
-                        <td style=""> '.$sender_compname.' </td>
+                        <td style=""> '.$creator_compname.' </td>
                         <td style=""> '.$priority_desc.' </td>
                         <td style=""> '.$date_create.' </td>
                         <td style="">

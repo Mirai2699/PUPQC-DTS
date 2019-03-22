@@ -161,7 +161,7 @@
                    $getsender = mysqli_query($connection, "SELECT * FROM `t_employees` AS EMP 
                                                                    INNER JOIN `r_office` AS OFF
                                                                    ON EMP.emp_office = OFF.office_ID
-                                                           WHERE EMP.emp_ID = '$docu_tr_createdby'");
+                                                           WHERE EMP.emp_ID = '$docu_tr_sender'");
                    while($sender_row = mysqli_fetch_array($getsender))
                    {
 
@@ -274,7 +274,7 @@
                    $getsender = mysqli_query($connection, "SELECT * FROM `t_employees` AS EMP 
                                                                    INNER JOIN `r_office` AS OFF
                                                                    ON EMP.emp_office = OFF.office_ID
-                                                           WHERE EMP.emp_ID = '$docu_tr_receiver'");
+                                                           WHERE EMP.emp_ID = '$docu_tr_sender'");
                    while($sender_row = mysqli_fetch_array($getsender))
                    {
 

@@ -167,7 +167,7 @@
                        <thead>
                        <tr>
                            <th style="border:1px solid; text-align: center">Description</th>
-                           <th style="border:1px solid; text-align: center">Staff</th>
+                           <th style="border:1px solid; text-align: center">Staff / Designee</th>
                            <th style="border:1px solid; text-align: center">Date and Timestamp</th>
                        </tr>
                        </thead>
