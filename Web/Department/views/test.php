@@ -4,20 +4,23 @@
 	include("../../../db_con.php");
 
 		//session_start();
-		$userID = $_SESSION['UserID'];
-	
+		$userID = 11;
 
-	    $view_query = mysqli_query($connection,"SELECT * FROM `t_document_track` AS DOCU
-	                                              INNER JOIN `t_accounts` AS ACC
-	                                              ON DOCU.docu_tr_createdby = ACC.acc_ID
-	                                              OR DOCU.docu_tr_sender = ACC.acc_ID
-	                                              OR DOCU.docu_tr_receiver = ACC.acc_ID
-	                                              WHERE DOCU.docu_tr_createdby = '$userID' 
-	                                              	or DOCU.docu_tr_sender = '$userID'
-	                                              	or DOCU.docu_tr_receiver= '$userID'
-	                                                and DOCU.docu_tr_status = 'OPEN'");
-	    $total_count = mysqli_num_rows($view_query);
-	    echo $total_count;
+	    $view_create = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` 
+	                                                WHERE docu_tr_his_createdby = '$userID' 
+	                                                  and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
+	    while($row_speed = mysqli_fetch_assoc($view_create))
+		{
+		    $days = $row_speed['day'];
+
+		    $view_create1 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
+	                                                WHERE docu_tr_his_createdby = '$userID' 
+	                                                  and day(docu_tr_his_timestamp) = '$days'");
+		    $total_count1 = mysqli_num_rows($view_create1);
+		    echo $total_count1.'<br>';
+
+		}
+
 ?>
 
 

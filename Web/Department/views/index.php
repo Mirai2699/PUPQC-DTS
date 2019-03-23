@@ -47,82 +47,128 @@
                                         <div class="col-md-12">
                                             <div id="daterep" style="width: 99%; height: 400px;"></div>
                                                <script type="text/javascript">
-
+                                                  var begin_date = '',
+                                                      end_date = '';
+                                                  $.post('functionalities/FilterLineChart.php',{'begin_date' : begin_date, 'end_date' : end_date}, function(response) {
+                                                    var result = JSON.parse(response);
+                                                    result["category"];
+                                                    result["data"]["created"];
+                                                    result["data"]["Transferred"];
+                                                    result["data"]["Closed"];
+                                                    /*Highcharts*/
+                                                  })
                                                    Highcharts.chart('daterep', {
                                                        chart: {
                                                            type: 'line'
                                                        },
                                                        title: {
-                                                           text: 'Monthly Financial Transactions For the Year <?php echo date("Y")?>'
-                                                       },
-                                                       xAxis: {
-                                                           categories: [<?php
-                                                                        $curryear = date("Y");
+                                                          text: 'Solar Employment Growth by Sector, 2010-2016'
+                                                      },
 
-                                                                             $view_query2 = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) AS Month, docu_tr_his_timestamp AS Name from t_document_track_history WHERE year(docu_tr_his_timestamp) = '$curryear'");
-                                                                            while($row2 = mysqli_fetch_assoc($view_query2))
-                                                                                {   
-                                                                                    $eventMonth = $row2["Month"];
-                                                                                    $m_name = $row2["Name"];
-                                                                                    echo '\''.$m_name.'\',';
-                                                                                }
-                                                                     ?>]
-                                                       },
-                                                       yAxis: {
-                                                           title: {
-                                                               text: 'Total Amount in Peso'
-                                                           }
-                                                       },
+                                                      subtitle: {
+                                                          text: 'Source: thesolarfoundation.com'
+                                                      },
 
-                                                       plotOptions: {
-                                                           line: {
-                                                               dataLabels: {
-                                                                   enabled: true
-                                                               },
-                                                               enableMouseTracking: true
-                                                           }
-                                                       },
+                                                      xAxis: {
+                                                          categories: [ <?php
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day, date(docu_tr_his_timestamp) AS DATET FROM `t_document_track_history` WHERE docu_tr_his_createdby = '$userID' 
+                                                                                             or docu_tr_his_sender = '$userID' 
+                                                                                             and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
+                                                                                             AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
+                                                                                             ORDER BY docu_tr_his_timestamp ");
+                                                                while($row_speeds = mysqli_fetch_assoc($view_creates))
+                                                                  {
+                                                                    $days = $row_speeds['day'];
+                                                                    $specify_days = new datetime($row_speeds['DATET']);
+                                                                    $new_format_day = $specify_days->format('Y-m-d');
+                                                                    echo '"'.$new_format_day.'",';
+                                                                  }
+                                                                  ?>]
+                                                      },
+                                                      legend: {
+                                                          layout: 'vertical',
+                                                          align: 'right',
+                                                          verticalAlign: 'middle'
+                                                      },
+
+                                                      plotOptions: {
+                                                          series: {
+                                                              label: {
+                                                                  connectorAllowed: false
+                                                              },
+                                                          }
+                                                      },
                                                        series: [
-                                                    //requisition types
-                                                     <?php
 
-                                                            $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no, day(docu_tr_his_timestamp) FROM `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_createdby = '$userID' and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30'
-                                                                                                               ");
-                                                             while($row = mysqli_fetch_assoc($view_query))
-                                                             {   
+                                                          {
+                                                              name: 'created',
+                                                              data: 
+                                                              
+                                                              [
+                                                                <?php
 
-                                                            ?>
-                                                    {
-                                                   
-                                                      name: '<?php echo $cat_name?>',
-                                                      id: 'FOR<?php echo $InvCategory?>',
-                                                      type:'line',
-                                                      data: [
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_createdby = '$userID' 
+                                                                                             and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' 
+                                                                                             ORDER BY docu_tr_his_timestamp");
+                                                                while($row_speeds = mysqli_fetch_assoc($view_creates))
+                                                                  {
+                                                                    $days = $row_speeds['day'];
+                                                                    $view_create1 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_createdby = '$userID' 
+                                                                                                              and day(docu_tr_his_timestamp) = '$days'");
+                                                                                $total_count1 = mysqli_num_rows($view_create1);
+                                                                                echo $total_count1.',';
 
-                                                            ?>
-                                                            {
-                                                                name: 'Created',
-                                                                y: <?php
+                                                                  } 
+                                                              ?>
+                                                              ]
 
-                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM 
-                                                                                                              `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_createdby = '$userID' and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
-                                                                    
-                                                                    $total_count1 = mysqli_num_rows($view_create);
-                                                                    echo $total_count1;
+                                                          },
+                                                          {
+                                                              name: 'Transferred',
+                                                              data: 
+                                                              
+                                                              [
+                                                                <?php
 
-                                                                   ?>
-                                                            },
-                                                          
-                                                        
-                                                        
-                                                      ]
-                                               
-                                                }, <?php
-                                                }
-                                                ?>
-                                              ]
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_sender = '$userID' 
+                                                                                             and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
+                                                                while($row_speeds = mysqli_fetch_assoc($view_creates))
+                                                                  {
+                                                                    $days = $row_speeds['day'];
+                                                                    $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_sender = '$userID' 
+                                                                                                              and day(docu_tr_his_timestamp) = '$days'");
+                                                                                $total_count2 = mysqli_num_rows($view_create2);
+                                                                                echo $total_count2.',';
+
+                                                                  } 
+                                                              ?>
+                                                              ]
+
+                                                          },
+                                                          {
+                                                              name: 'Closed',
+                                                              data: 
+                                                              
+                                                              [
+                                                                <?php
+
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_closedby = '$userID' 
+                                                                                             and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
+                                                                while($row_speeds = mysqli_fetch_assoc($view_creates))
+                                                                  {
+                                                                    $days = $row_speeds['day'];
+                                                                    $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_closedby = '$userID' 
+                                                                                                              and day(docu_tr_his_timestamp) = '$days'");
+                                                                                $total_count2 = mysqli_num_rows($view_create2);
+                                                                                echo $total_count2.',';
+
+                                                                  } 
+                                                              ?>
+                                                              ]
+
+                                                          },
+
+                                                           ],
 
                                                    });
                                                </script>             

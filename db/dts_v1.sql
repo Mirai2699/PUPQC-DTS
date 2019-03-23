@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2019 at 11:42 AM
+-- Generation Time: Mar 23, 2019 at 11:49 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -230,7 +230,10 @@ INSERT INTO `t_document_track` (`docu_tr_ID`, `docu_tr_ticket_no`, `docu_tr_doct
 (4, '201900004', 2, 1, '', 2, '', 3, NULL, 'New sample', 'new sample', 'Done', NULL, 'Demelyn Monzon', 4, NULL, NULL, 4, NULL, '0', '2019-03-22', '11:10:10', NULL, NULL, NULL, NULL, '2019-03-22', '11:14:53', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'0', b'1'),
 (5, '201900005', 2, 1, '', 1, '0', 3, 3, 'New sample', 'new sample sample', 'Done', 'merly for evaluation', 'Demelyn Monzon', 11, 11, 6, 11, 11, '0', '2019-03-22', '13:16:52', '2019-03-22', '13:22:37', '2019-03-22', '13:23:13', '2019-03-22', '13:23:19', '2019-03-22', '13:24:31', 'OPEN', 'NO', 'Re-Opened', b'0', b'1'),
 (6, '201900006', 2, 1, '', 1, '0', 5, 10, 'testing 2', 'testing 2', NULL, 'for testing 2', 'Ed', 6, NULL, 6, NULL, NULL, '1', '2019-03-22', '13:47:38', '2019-03-22', '13:48:05', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
-(7, '201900007', 1, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '15:57:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1');
+(7, '201900007', 1, 1, '', 1, '1', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
+(8, '201900008', 1, 2, 'PUP MAIN', 1, '', 3, NULL, 'New sample', 'new', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-25', '16:03:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
+(9, '201900009', 2, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:22:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
+(10, '201900010', 4, 1, '', 1, '', 3, NULL, 'For testing', '33323', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:23:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1');
 
 -- --------------------------------------------------------
 
@@ -304,7 +307,11 @@ INSERT INTO `t_document_track_history` (`docu_tr_his_ID`, `docu_tr_his_ticket_no
 (20, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', 'Done', NULL, 'Demelyn Monzon', 11, NULL, NULL, 0, 11, NULL, '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, '2019-03-22', '13:23:19', '2019-03-22', '13:24:31', 'OPEN', 'NO', 'Re-Opened', b'1', b'1', '2019-03-22 13:24:31'),
 (21, '201900006', 2, 1, '', 1, '', 5, NULL, 'testing 2', 'testing 2', NULL, NULL, 'Ed', 6, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '13:47:38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 13:47:38'),
 (22, '201900006', 2, 1, '', 1, '0', 5, 10, 'testing 2', 'testing 2', NULL, 'for testing 2', 'Ed', 6, NULL, 6, NULL, NULL, '1', '2019-03-22', '13:47:38', '2019-03-22', '13:48:05', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 13:48:05'),
-(23, '201900007', 1, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '15:57:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 15:57:59');
+(23, '201900007', 1, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '15:57:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 15:57:59'),
+(24, '201900008', 1, 2, 'PUP MAIN', 1, '', 3, NULL, 'New sample', 'new', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-25', '16:03:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-25 16:03:54'),
+(25, '201900009', 2, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:22:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-23 16:22:36'),
+(26, '201900010', 4, 1, '', 1, '', 3, NULL, 'For testing', '33323', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:23:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-23 16:23:42'),
+(27, '201900007', 1, 1, '', 1, '1', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-23 16:25:02');
 
 -- --------------------------------------------------------
 
@@ -414,7 +421,11 @@ INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestam
 (28, 2, 2, '2019-03-22', '14:30:18'),
 (29, 4, 2, '2019-03-22', '14:31:14'),
 (30, 2, 2, '2019-03-22', '14:58:23'),
-(31, 11, 2, '2019-03-22', '15:04:01');
+(31, 11, 2, '2019-03-22', '15:04:01'),
+(32, 11, 2, '2019-03-23', '12:32:53'),
+(33, 11, 2, '2019-03-25', '12:15:57'),
+(34, 11, 2, '2019-03-25', '13:08:37'),
+(35, 11, 2, '2019-03-25', '13:59:49');
 
 --
 -- Indexes for dumped tables
@@ -552,13 +563,13 @@ ALTER TABLE `t_accounts`
 -- AUTO_INCREMENT for table `t_document_track`
 --
 ALTER TABLE `t_document_track`
-  MODIFY `docu_tr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `docu_tr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `t_document_track_history`
 --
 ALTER TABLE `t_document_track_history`
-  MODIFY `docu_tr_his_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `docu_tr_his_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `t_employees`
@@ -576,7 +587,7 @@ ALTER TABLE `t_report_bug`
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables
