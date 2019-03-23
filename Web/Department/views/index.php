@@ -56,7 +56,17 @@
                                                            text: 'Monthly Financial Transactions For the Year <?php echo date("Y")?>'
                                                        },
                                                        xAxis: {
-                                                           categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                                                           categories: [<?php
+                                                                        $curryear = date("Y");
+
+                                                                             $view_query2 = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) AS Month, docu_tr_his_timestamp AS Name from t_document_track_history WHERE year(docu_tr_his_timestamp) = '$curryear'");
+                                                                            while($row2 = mysqli_fetch_assoc($view_query2))
+                                                                                {   
+                                                                                    $eventMonth = $row2["Month"];
+                                                                                    $m_name = $row2["Name"];
+                                                                                    echo '\''.$m_name.'\',';
+                                                                                }
+                                                                     ?>]
                                                        },
                                                        yAxis: {
                                                            title: {
@@ -74,17 +84,15 @@
                                                        },
                                                        series: [
                                                     //requisition types
-                                                    <?php
-                                                          //$temp = "null";
-                                                         $view_query = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_doctype, docutype_desc FROM `t_document_track_history` AS DOCUHIS
-                                                                                                 INNER JOIN `r_document_type` AS DOCTYPE
-                                                                                                 ON DOCUHIS.docu_tr_his_doctype = DOCTYPE.docutype_ID
-                                                                                                ");
-                                                         while($row = mysqli_fetch_assoc($view_query))
+                                                     <?php
+
+                                                            $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no, day(docu_tr_his_timestamp) FROM `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_createdby = '$userID' and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30'
+                                                                                                               ");
+                                                             while($row = mysqli_fetch_assoc($view_query))
                                                              {   
-                                                                 $InvCategory = $row["docu_tr_his_doctype"];
-                                                                 $cat_name = $row["docutype_desc"];
-                                                    ?>
+
+                                                            ?>
                                                     {
                                                    
                                                       name: '<?php echo $cat_name?>',
@@ -92,67 +100,22 @@
                                                       type:'line',
                                                       data: [
 
-
+                                                            ?>
                                                             {
                                                                 name: 'Created',
                                                                 y: <?php
-                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_createdby = '$userID'
-                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
+
+                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM 
+                                                                                                              `t_document_track_history` 
+                                                                                                                WHERE docu_tr_his_createdby = '$userID' and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
                                                                     
                                                                     $total_count1 = mysqli_num_rows($view_create);
                                                                     echo $total_count1;
 
                                                                    ?>
                                                             },
-                                                            {
-                                                                name: 'Forwarded',
-                                                                y: <?php
-                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_sender = '$userID'
-                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
-                                                                    
-                                                                    $total_count2 = mysqli_num_rows($view_create);
-                                                                    echo $total_count2;
-
-                                                                   ?>
-                                                            },
-                                                            {
-                                                                name: 'Received',
-                                                                y: <?php
-                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_receiver = '$userID'
-                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
-                                                                    
-                                                                    $total_count3 = mysqli_num_rows($view_create);
-                                                                    echo $total_count3;
-
-                                                                   ?>
-                                                            },
-                                                            {
-                                                                name: 'Closed',
-                                                                y: <?php
-                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_closedby = '$userID'
-                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
-                                                                    
-                                                                    $total_count4 = mysqli_num_rows($view_create);
-                                                                    echo $total_count4;
-
-                                                                   ?>
-                                                            },
-                                                            {
-                                                                name: 'Re-Opened',
-                                                                y: <?php
-                                                                    $view_create = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history` 
-                                                                                                                WHERE docu_tr_his_reopenedby = '$userID'
-                                                                                                                and docu_tr_his_doctype = '$InvCategory'");
-                                                                    
-                                                                    $total_count5 = mysqli_num_rows($view_create);
-                                                                    echo $total_count5;
-
-                                                                   ?>
-                                                            },
+                                                          
+                                                        
                                                         
                                                       ]
                                                
