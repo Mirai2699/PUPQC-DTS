@@ -52,6 +52,13 @@
                         <span class="submenu-title">Document Tracking</span>
                       </a>
                     </li>
+                    <li>
+                      <a href="rep_ipcr.php">
+                        <i class="fa fa-copy"></i>
+                          &nbsp;
+                        <span class="submenu-title">IPCR</span>
+                      </a>
+                    </li>
                   </ul>
                 </li>
               </ul>
