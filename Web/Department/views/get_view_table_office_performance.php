@@ -4,7 +4,7 @@
         <div class="panel-heading">
             <h5 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" class="accordion-toggle collapsed" aria-expanded="false" style="font-size: 16px">
-               See more details <i class="fa fa-angle-double-down"></i></a>
+               See more details (Table View) <i class="fa fa-angle-double-down"></i></a>
             </h5>
         </div>
         <style type="text/css">
@@ -28,7 +28,7 @@
                             <a href="#staff" data-toggle="tab" aria-expanded="false">Staff</a>
                         </li>
                         <li class="">
-                            <a href="#topics" data-toggle="tab" aria-expanded="false">Topics</a>
+                            <a href="#topics" data-toggle="tab" aria-expanded="false">Topics (Document Types)</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -48,3 +48,4 @@
     </div>
 </div>
 <!--ACCORDION-->
+<div class="panel" style="padding: 1px; background-color: #6e6e6e; margin: 10px"></div>

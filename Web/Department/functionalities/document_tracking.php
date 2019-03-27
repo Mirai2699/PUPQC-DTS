@@ -462,7 +462,7 @@
 			         //Employee Naming
 			         $receive_fname = 'N/A';
 			         $receive_lname = 'N/A';  
-			         $receive_compname = 'N/A';
+			         $receive_compname = 'N/A';	
 			      }
 		    }
 		    else

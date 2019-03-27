@@ -1,88 +1,88 @@
 <table class="table table-condensed mbn" style="font-size: 15px">
     <thead>
-        <th>Employee</th>
+        <th>Document Type</th>
         <th>Created</th>
         <th>Transferred</th>
+        <th>Received</th>
         <th>Closed</th>
         <th>Re-Opened</th>
     </thead>
     <tbody>
         <?php
-            $receiver_query = mysqli_query($connection,"SELECT * FROM `t_accounts` AS ACC
-                                                               INNER JOIN `t_employees` AS EMP
-                                                               INNER JOIN `r_office` AS OFF 
-                                                               ON ACC.acc_empID = EMP.emp_ID
-                                                               and EMP.emp_office = OFF.office_ID
-                                                               WHERE ACC.acc_ID = '$userID'");
-            while($rq = mysqli_fetch_array($receiver_query))
-            {
-               $receiving_office = $rq["office_ID"];
-               $receiving_off_name = $rq["office_name"];
-            }
-
-         
             
-             //For creation
-                $view_create = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
+            $document_type = mysqli_query($connection, "SELECT * FROM `r_document_type`");
+            while($row_type = mysqli_fetch_assoc($document_type))
+            {
+                $docutype_ID = $row_type["docutype_ID"];
+                $docutype_name = $row_type["docutype_desc"];
+
+                $view_topic_create = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
                                                                 INNER JOIN  `t_accounts` AS ACC 
                                                                 ON ACC.acc_ID = HISDOCU.docu_tr_his_createdby
-                                                                WHERE docu_tr_his_from_office = '$receiving_office'
-                                                                and ACC.acc_ID = '$userID'
+                                                                WHERE ACC.acc_ID = '$userID'
+                                                                and HISDOCU.docu_tr_his_doctype = '$docutype_ID'
                                                                 GROUP BY docu_tr_his_ticket_no");
-                $get_create = mysqli_num_rows($view_create);
-             //For transfer
-                $view_transferred = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
-                                                                    INNER JOIN  `t_accounts` AS ACC 
-                                                                    ON ACC.acc_ID = HISDOCU.docu_tr_his_sender
-                                                                    INNER JOIN `t_employees` AS EMP
-                                                                    ON ACC.acc_empID = EMP.emp_ID
-                                                                    INNER JOIN `r_office` AS OFF 
-                                                                    ON EMP.emp_office = OFF.office_ID
-                                                                    WHERE EMP.emp_office = '$receiving_office'
-                                                                    and ACC.acc_ID = '$userID'
-                                                                    GROUP BY docu_tr_his_ticket_no");
-                $get_transferred = mysqli_num_rows($view_transferred);
-
-             //closed
-                 $view_closed = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
-                                                                    INNER JOIN  `t_accounts` AS ACC 
-                                                                    ON ACC.acc_ID = HISDOCU.docu_tr_his_closedby
-                                                                    INNER JOIN `t_employees` AS EMP
-                                                                    ON ACC.acc_empID = EMP.emp_ID
-                                                                    INNER JOIN `r_office` AS OFF 
-                                                                    ON EMP.emp_office = OFF.office_ID
-                                                                    WHERE EMP.emp_office = '$receiving_office'
-                                                                    and ACC.acc_ID = '$userID'
-                                                                    GROUP BY docu_tr_his_ticket_no");
-                $get_closed = mysqli_num_rows($view_closed);
+                $create_total_topic = mysqli_num_rows($view_topic_create);
 
 
-             //reopen
-                $view_reopen = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
-                                                                    INNER JOIN  `t_accounts` AS ACC 
-                                                                    ON ACC.acc_ID = HISDOCU.docu_tr_his_reopenedby
-                                                                    INNER JOIN `t_employees` AS EMP
-                                                                    ON ACC.acc_empID = EMP.emp_ID
-                                                                    INNER JOIN `r_office` AS OFF 
-                                                                    ON EMP.emp_office = OFF.office_ID
-                                                                    WHERE EMP.emp_office = '$receiving_office'
-                                                                    and ACC.acc_ID = '$userID'
-                                                                    GROUP BY docu_tr_his_ticket_no");
-                $get_reopen = mysqli_num_rows($view_reopen);
+
+                $view_topic_sent = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
+                                                                INNER JOIN  `t_accounts` AS ACC 
+                                                                ON ACC.acc_ID = HISDOCU.docu_tr_his_sender
+                                                                WHERE ACC.acc_ID = '$userID'
+                                                                and HISDOCU.docu_tr_his_doctype = '$docutype_ID'
+                                                                GROUP BY docu_tr_his_ticket_no");
+                $sent_total_topic = mysqli_num_rows($view_topic_sent);
+
+
+                $view_topic_received = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
+                                                                INNER JOIN  `t_accounts` AS ACC 
+                                                                ON ACC.acc_ID = HISDOCU.docu_tr_his_receiver
+                                                                WHERE ACC.acc_ID = '$userID'
+                                                                and HISDOCU.docu_tr_his_doctype = '$docutype_ID'
+                                                                GROUP BY docu_tr_his_ticket_no");
+                $received_total_topic = mysqli_num_rows($view_topic_received);
+
+
+                $view_topic_closed = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
+                                                                INNER JOIN  `t_accounts` AS ACC 
+                                                                ON ACC.acc_ID = HISDOCU.docu_tr_his_closedby
+                                                                WHERE ACC.acc_ID = '$userID'
+                                                                and HISDOCU.docu_tr_his_doctype = '$docutype_ID'
+                                                                GROUP BY docu_tr_his_ticket_no");
+                $closed_total_topic = mysqli_num_rows($view_topic_closed);
+
+                $view_topic_reopen = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
+                                                                INNER JOIN  `t_accounts` AS ACC 
+                                                                ON ACC.acc_ID = HISDOCU.docu_tr_his_reopenedby
+                                                                WHERE ACC.acc_ID = '$userID'
+                                                                and HISDOCU.docu_tr_his_doctype = '$docutype_ID'
+                                                                GROUP BY docu_tr_his_ticket_no");
+                $reopen_total_topic = mysqli_num_rows($view_topic_reopen);
+
+
+                echo
+                '
+                    <tr>
+                        <td>'.$docutype_name.'</td>
+                        <td>'.$create_total_topic.'</td>
+                        <td>'.$sent_total_topic.'</td>
+                        <td>'.$received_total_topic.'</td>
+                        <td>'.$closed_total_topic.'</td>
+                        <td>'.$reopen_total_topic.'</td>
+                    </tr>
+                ';
+            }
+            
+             //For creation
+               
+              
+       
 
 
 
              //display                             
-                echo
-                '
-                    <tr>
-                        <td>'.$compname.'</td>
-                        <td>'.$get_create.'</td>
-                        <td>'.$get_transferred.'</td>
-                        <td>'.$get_closed.'</td>
-                        <td>'.$get_reopen.'</td>
-                    </tr>
-                ';
+                
             
             
         ?>

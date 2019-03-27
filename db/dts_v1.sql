@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2019 at 11:49 AM
+-- Generation Time: Mar 27, 2019 at 08:30 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -226,14 +226,16 @@ CREATE TABLE `t_document_track` (
 INSERT INTO `t_document_track` (`docu_tr_ID`, `docu_tr_ticket_no`, `docu_tr_doctype`, `docu_tr_sourcetype`, `docu_tr_ext_source_desc`, `docu_tr_prioritytype`, `docu_tr_count_date_process`, `docu_tr_from_office`, `docu_tr_to_office`, `docu_tr_subject`, `docu_tr_desc`, `docu_tr_closing_remarks`, `docu_tr_remarks`, `docu_tr_asignatory`, `docu_tr_createdby`, `docu_tr_receiver`, `docu_tr_sender`, `docu_tr_closedby`, `docu_tr_reopenedby`, `docu_tr_receiving_stat`, `docu_tr_date_create`, `docu_tr_time_create`, `docu_tr_date_sent`, `docu_tr_time_sent`, `docu_tr_date_received`, `docu_tr_time_received`, `docu_tr_date_done`, `docu_tr_time_done`, `docu_tr_date_reopened`, `docu_tr_time_reopened`, `docu_tr_status`, `docu_tr_overdue_stat`, `docu_tr_action`, `docu_tr_notif_stat`, `docu_tr_disp_stat`) VALUES
 (1, '201900001', 1, 1, '', 1, '0', 3, 10, 'Application', 'Application for PUPCET', 'for filed', 'signed', 'Meg', 11, 2, 12, 2, NULL, '0', '2019-03-06', '14:34:03', '2019-03-06', '17:25:07', '2019-03-06', '17:28:43', '2019-03-06', '17:28:57', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'0', b'1'),
 (2, '201900002', 3, 2, 'CHED', 1, '0', 11, 3, 'Test application', 'Lakbay Aral 2019', NULL, 'Greetings of Peace to All!', 'Meg', 12, 11, 12, NULL, NULL, '0', '2019-03-06', '18:29:14', '2019-03-06', '18:29:53', '2019-03-11', '18:32:45', NULL, NULL, NULL, NULL, 'OPEN', 'YES', 'Received', b'0', b'1'),
-(3, '201900003', 1, 1, '', 1, '0', 3, 5, 'For testing', 'for testing', NULL, 'for testing', 'Demelyn Monzon', 4, NULL, 4, NULL, NULL, '1', '2019-03-22', '10:50:55', '2019-03-22', '10:51:47', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
+(3, '201900003', 1, 1, '', 1, '0', 3, 5, 'For testing', 'for testing', 'Evaluated', 'for testing', 'Demelyn Monzon', 4, 6, 4, 6, NULL, '0', '2019-03-22', '10:50:55', '2019-03-22', '10:51:47', '2019-03-27', '13:35:01', '2019-03-27', '13:35:10', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'0', b'1'),
 (4, '201900004', 2, 1, '', 2, '', 3, NULL, 'New sample', 'new sample', 'Done', NULL, 'Demelyn Monzon', 4, NULL, NULL, 4, NULL, '0', '2019-03-22', '11:10:10', NULL, NULL, NULL, NULL, '2019-03-22', '11:14:53', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'0', b'1'),
-(5, '201900005', 2, 1, '', 1, '0', 3, 3, 'New sample', 'new sample sample', 'Done', 'merly for evaluation', 'Demelyn Monzon', 11, 11, 6, 11, 11, '0', '2019-03-22', '13:16:52', '2019-03-22', '13:22:37', '2019-03-22', '13:23:13', '2019-03-22', '13:23:19', '2019-03-22', '13:24:31', 'OPEN', 'NO', 'Re-Opened', b'0', b'1'),
-(6, '201900006', 2, 1, '', 1, '0', 5, 10, 'testing 2', 'testing 2', NULL, 'for testing 2', 'Ed', 6, NULL, 6, NULL, NULL, '1', '2019-03-22', '13:47:38', '2019-03-22', '13:48:05', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
-(7, '201900007', 1, 1, '', 1, '1', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
+(5, '201900005', 2, 1, '', 1, '5', 3, 4, 'New sample', 'new sample sample', 'Done', 'for transafer', 'Demelyn Monzon', 11, 11, 11, 11, 11, '1', '2019-03-22', '13:16:52', '2019-03-27', '13:26:36', '2019-03-22', '13:23:13', '2019-03-22', '13:23:19', '2019-03-22', '13:24:31', 'OPEN', 'YES', 'Reviewed and Transferred', b'1', b'1'),
+(6, '201900006', 2, 1, '', 1, '0', 5, 10, 'testing 2', 'testing 2', NULL, 'for testing 2', 'Ed', 6, 2, 6, NULL, NULL, '0', '2019-03-22', '13:47:38', '2019-03-22', '13:48:05', '2019-03-27', '13:31:20', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'0', b'1'),
+(7, '201900007', 1, 1, '', 1, '5', 3, 10, 'For testing', 'test', NULL, 'for transfer', 'Edgardo S. delmo', 11, 6, 6, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-27', '13:34:14', '2019-03-27', '13:33:32', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
 (8, '201900008', 1, 2, 'PUP MAIN', 1, '', 3, NULL, 'New sample', 'new', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-25', '16:03:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
 (9, '201900009', 2, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:22:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
-(10, '201900010', 4, 1, '', 1, '', 3, NULL, 'For testing', '33323', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:23:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1');
+(10, '201900010', 4, 1, '', 1, '4', 3, 9, 'For testing', '33323', NULL, 'papirma', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-23', '16:23:42', '2019-03-27', '13:25:00', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
+(11, '201900011', 3, 1, '', 2, '', 3, NULL, 'New sample', 'new sample', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:24:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
+(12, '201900012', 3, 2, 'PUP MAIN', 1, '', 3, NULL, 'External document', 'external', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:26:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1');
 
 -- --------------------------------------------------------
 
@@ -298,20 +300,29 @@ INSERT INTO `t_document_track_history` (`docu_tr_his_ID`, `docu_tr_his_ticket_no
 (11, '201900003', 1, 1, '', 1, '0', 3, 5, 'For testing', 'for testing', NULL, 'for testing', 'Demelyn Monzon', 4, NULL, 4, NULL, NULL, '1', '2019-03-22', '10:50:55', '2019-03-22', '10:51:47', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 10:51:48'),
 (12, '201900004', 2, 1, '', 2, '', 3, NULL, 'New sample', 'new sample', NULL, NULL, 'Demelyn Monzon', 4, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '11:10:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 11:10:10'),
 (13, '201900004', 2, 2, '', 1, '', 3, NULL, 'New sample', 'new sample', 'Done', NULL, 'Demelyn Monzon', 4, NULL, NULL, 4, NULL, '0', '2019-03-22', '11:10:10', NULL, NULL, NULL, NULL, '2019-03-22', '11:14:53', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'1', b'1', '2019-03-22 11:14:53'),
-(14, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', NULL, NULL, 'Demelyn Monzon', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 13:16:53'),
-(15, '201900005', 2, 1, '', 1, '0', 3, 5, 'New sample', 'new sample sample', NULL, 'for transfer', 'Demelyn Monzon', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:17:12', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 13:17:12'),
-(16, '201900005', 2, 1, '', 1, '0', 3, 5, 'New sample', 'new sample sample', NULL, 'for transfer', 'Demelyn Monzon', 11, 6, 11, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:17:12', '2019-03-22', '13:22:06', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-22 13:22:06'),
-(17, '201900005', 2, 1, '', 1, '0', 3, 3, 'New sample', 'new sample sample', NULL, 'merly for evaluation', 'Demelyn Monzon', 11, NULL, 6, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:22:37', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 13:22:37'),
-(18, '201900005', 2, 1, '', 1, '0', 3, 3, 'New sample', 'new sample sample', NULL, 'merly for evaluation', 'Demelyn Monzon', 11, 11, 6, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:22:37', '2019-03-22', '13:23:13', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-22 13:23:13'),
-(19, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', 'Done', NULL, 'Demelyn Monzon', 11, NULL, NULL, 11, NULL, '0', '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, '2019-03-22', '13:23:19', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'1', b'1', '2019-03-22 13:23:19'),
-(20, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', 'Done', NULL, 'Demelyn Monzon', 11, NULL, NULL, 0, 11, NULL, '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, '2019-03-22', '13:23:19', '2019-03-22', '13:24:31', 'OPEN', 'NO', 'Re-Opened', b'1', b'1', '2019-03-22 13:24:31'),
+(14, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', NULL, NULL, 'Demelyn Monzon', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'YES', 'Created', b'1', b'1', '2019-03-22 13:16:53'),
+(15, '201900005', 2, 1, '', 1, '0', 3, 5, 'New sample', 'new sample sample', NULL, 'for transfer', 'Demelyn Monzon', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:17:12', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'YES', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 13:17:12'),
+(16, '201900005', 2, 1, '', 1, '0', 3, 5, 'New sample', 'new sample sample', NULL, 'for transfer', 'Demelyn Monzon', 11, 6, 11, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:17:12', '2019-03-22', '13:22:06', NULL, NULL, NULL, NULL, 'OPEN', 'YES', 'Received', b'1', b'1', '2019-03-22 13:22:06'),
+(17, '201900005', 2, 1, '', 1, '0', 3, 3, 'New sample', 'new sample sample', NULL, 'merly for evaluation', 'Demelyn Monzon', 11, NULL, 6, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:22:37', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'YES', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 13:22:37'),
+(18, '201900005', 2, 1, '', 1, '0', 3, 3, 'New sample', 'new sample sample', NULL, 'merly for evaluation', 'Demelyn Monzon', 11, 11, 6, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-22', '13:22:37', '2019-03-22', '13:23:13', NULL, NULL, NULL, NULL, 'OPEN', 'YES', 'Received', b'1', b'1', '2019-03-22 13:23:13'),
+(19, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', 'Done', NULL, 'Demelyn Monzon', 11, NULL, NULL, 11, NULL, '0', '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, '2019-03-22', '13:23:19', NULL, NULL, 'CLOSED', 'YES', 'Closed', b'1', b'1', '2019-03-22 13:23:19'),
+(20, '201900005', 2, 1, '', 1, '', 3, NULL, 'New sample', 'new sample sample', 'Done', NULL, 'Demelyn Monzon', 11, NULL, NULL, 0, 11, NULL, '2019-03-22', '13:16:52', NULL, NULL, NULL, NULL, '2019-03-22', '13:23:19', '2019-03-22', '13:24:31', 'OPEN', 'YES', 'Re-Opened', b'1', b'1', '2019-03-22 13:24:31'),
 (21, '201900006', 2, 1, '', 1, '', 5, NULL, 'testing 2', 'testing 2', NULL, NULL, 'Ed', 6, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '13:47:38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 13:47:38'),
 (22, '201900006', 2, 1, '', 1, '0', 5, 10, 'testing 2', 'testing 2', NULL, 'for testing 2', 'Ed', 6, NULL, 6, NULL, NULL, '1', '2019-03-22', '13:47:38', '2019-03-22', '13:48:05', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-22 13:48:05'),
 (23, '201900007', 1, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-22', '15:57:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-22 15:57:59'),
 (24, '201900008', 1, 2, 'PUP MAIN', 1, '', 3, NULL, 'New sample', 'new', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-25', '16:03:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-25 16:03:54'),
 (25, '201900009', 2, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:22:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-23 16:22:36'),
 (26, '201900010', 4, 1, '', 1, '', 3, NULL, 'For testing', '33323', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:23:42', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-23 16:23:42'),
-(27, '201900007', 1, 1, '', 1, '1', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-23 16:25:02');
+(27, '201900007', 1, 1, '', 1, '1', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-23 16:25:02'),
+(28, '201900011', 3, 1, '', 2, '', 3, NULL, 'New sample', 'new sample', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:24:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-27 13:24:12'),
+(29, '201900010', 4, 1, '', 1, '4', 3, 9, 'For testing', '33323', NULL, 'papirma', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-23', '16:23:42', '2019-03-27', '13:25:00', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-27 13:25:00'),
+(30, '201900012', 3, 2, 'PUP MAIN', 1, '', 3, NULL, 'External document', 'external', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:26:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-27 13:26:09'),
+(31, '201900005', 2, 1, '', 1, '5', 3, 4, 'New sample', 'new sample sample', NULL, 'for transafer', 'Demelyn Monzon', 11, NULL, 11, NULL, NULL, '1', '2019-03-22', '13:16:52', '2019-03-27', '13:26:36', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-27 13:26:36'),
+(32, '201900006', 2, 1, '', 1, '5', 5, 10, 'testing 2', 'testing 2', NULL, 'for testing 2', 'Ed', 6, 2, 6, NULL, NULL, '1', '2019-03-22', '13:47:38', '2019-03-22', '13:48:05', '2019-03-27', '13:31:20', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-27 13:31:20'),
+(33, '201900007', 1, 1, '', 1, '4', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, 6, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', '2019-03-27', '13:33:32', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-27 13:33:32'),
+(34, '201900007', 1, 1, '', 1, '5', 3, 10, 'For testing', 'test', NULL, 'for transfer', 'Edgardo S. delmo', 11, NULL, 6, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-27', '13:34:14', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-27 13:34:14'),
+(35, '201900003', 1, 1, '', 1, '5', 3, 5, 'For testing', 'for testing', NULL, 'for testing', 'Demelyn Monzon', 4, 6, 4, NULL, NULL, '1', '2019-03-22', '10:50:55', '2019-03-22', '10:51:47', '2019-03-27', '13:35:01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-27 13:35:01'),
+(36, '201900003', 1, 1, '', 1, '', 3, NULL, 'For testing', 'for testing', 'Evaluated', NULL, 'Demelyn Monzon', 4, NULL, NULL, 6, NULL, '0', '2019-03-22', '10:50:55', NULL, NULL, NULL, NULL, '2019-03-27', '13:35:10', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'1', b'1', '2019-03-27 13:35:10');
 
 -- --------------------------------------------------------
 
@@ -425,7 +436,15 @@ INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestam
 (32, 11, 2, '2019-03-23', '12:32:53'),
 (33, 11, 2, '2019-03-25', '12:15:57'),
 (34, 11, 2, '2019-03-25', '13:08:37'),
-(35, 11, 2, '2019-03-25', '13:59:49');
+(35, 11, 2, '2019-03-25', '13:59:49'),
+(36, 11, 2, '2019-03-27', '13:08:54'),
+(37, 2, 2, '2019-03-27', '13:31:00'),
+(38, 11, 2, '2019-03-27', '13:32:29'),
+(39, 6, 2, '2019-03-27', '13:33:24'),
+(40, 1, 1, '2019-03-27', '13:37:54'),
+(41, 11, 2, '2019-03-27', '13:39:37'),
+(42, 4, 2, '2019-03-27', '14:09:37'),
+(43, 11, 2, '2019-03-27', '14:31:12');
 
 --
 -- Indexes for dumped tables
@@ -563,13 +582,13 @@ ALTER TABLE `t_accounts`
 -- AUTO_INCREMENT for table `t_document_track`
 --
 ALTER TABLE `t_document_track`
-  MODIFY `docu_tr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `docu_tr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `t_document_track_history`
 --
 ALTER TABLE `t_document_track_history`
-  MODIFY `docu_tr_his_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `docu_tr_his_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `t_employees`
@@ -587,7 +606,7 @@ ALTER TABLE `t_report_bug`
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- Constraints for dumped tables

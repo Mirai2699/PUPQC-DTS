@@ -37,7 +37,7 @@
                             <div class="panel-heading" style="background-color: #262626; color: white" >
                                 <h3 class="panel-title" style="margin:1px">
                                     <i class="fa fa-bar-chart-o"></i>&nbsp;
-                                    Document Types and Their Corresponding Transactions
+                                   Document Ticketing Transactions Chart
                                 </h3>
                             </div>
 
@@ -62,17 +62,21 @@
                                                            type: 'line'
                                                        },
                                                        title: {
-                                                          text: 'Solar Employment Growth by Sector, 2010-2016'
+                                                          text: 'Document Transactions Chart as of <?php echo $date = date('F Y');?>'
                                                       },
 
                                                       subtitle: {
-                                                          text: 'Source: thesolarfoundation.com'
+                                                          text: 'Covers the ticket Transactions from Created, Transffered, Received, Closed and Reopened.'
                                                       },
 
                                                       xAxis: {
                                                           categories: [ <?php
-                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day, date(docu_tr_his_timestamp) AS DATET FROM `t_document_track_history` WHERE docu_tr_his_createdby = '$userID' 
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day, date(docu_tr_his_timestamp) AS DATET FROM `t_document_track_history` 
+                                                                                             WHERE docu_tr_his_createdby = '$userID' 
                                                                                              or docu_tr_his_sender = '$userID' 
+                                                                                             or docu_tr_his_receiver = '$userID' 
+                                                                                             or docu_tr_his_closedby = '$userID' 
+                                                                                             or docu_tr_his_reopenedby = '$userID' 
                                                                                              and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
                                                                                              AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
                                                                                              ORDER BY docu_tr_his_timestamp ");
@@ -101,14 +105,15 @@
                                                        series: [
 
                                                           {
-                                                              name: 'created',
+                                                              name: 'Created',
                                                               data: 
                                                               
                                                               [
                                                                 <?php
 
                                                                 $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_createdby = '$userID' 
-                                                                                             and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' 
+                                                                                            and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
+                                                                                             AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
                                                                                              ORDER BY docu_tr_his_timestamp");
                                                                 while($row_speeds = mysqli_fetch_assoc($view_creates))
                                                                   {
@@ -130,12 +135,40 @@
                                                               [
                                                                 <?php
 
-                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_sender = '$userID' 
-                                                                                             and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
+                                                                $view_trans = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_sender = '$userID' 
+                                                                                             and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
+                                                                                             AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
+                                                                                             ORDER BY docu_tr_his_timestamp");
+                                                                while($row_trans = mysqli_fetch_assoc($view_trans))
+                                                                  {
+                                                                    $days = $row_trans['day'];
+                                                                    $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_sender = '$userID' 
+                                                                                                              and day(docu_tr_his_timestamp) = '$days'");
+                                                                                $total_count2 = mysqli_num_rows($view_create2);
+                                                                                echo $total_count2.',';
+
+                                                                  } 
+                                                              ?>
+                                                              ]
+
+                                                          },
+                                                           {
+                                                              name: 'Received',
+                                                              data: 
+                                                              
+                                                              [
+                                                                <?php
+
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_receiver = '$userID' 
+                                                                                             and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
+                                                                                             AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
+                                                                                             ORDER BY docu_tr_his_timestamp");
                                                                 while($row_speeds = mysqli_fetch_assoc($view_creates))
                                                                   {
                                                                     $days = $row_speeds['day'];
-                                                                    $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_sender = '$userID' 
+                                                                    $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM 
+                                                                                                            `t_document_track_history`
+                                                                                                             WHERE docu_tr_his_receiver = '$userID' 
                                                                                                               and day(docu_tr_his_timestamp) = '$days'");
                                                                                 $total_count2 = mysqli_num_rows($view_create2);
                                                                                 echo $total_count2.',';
@@ -153,11 +186,38 @@
                                                                 <?php
 
                                                                 $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_closedby = '$userID' 
-                                                                                             and docu_tr_his_timestamp BETWEEN '2019-03-01' and '2019-03-30' ");
+                                                                                            and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
+                                                                                             AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
+                                                                                             ORDER BY docu_tr_his_timestamp");
                                                                 while($row_speeds = mysqli_fetch_assoc($view_creates))
                                                                   {
                                                                     $days = $row_speeds['day'];
                                                                     $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_closedby = '$userID' 
+                                                                                                              and day(docu_tr_his_timestamp) = '$days'");
+                                                                                $total_count2 = mysqli_num_rows($view_create2);
+                                                                                echo $total_count2.',';
+
+                                                                  } 
+                                                              ?>
+                                                              ]
+
+                                                          },
+                                                         
+                                                          {
+                                                              name: 'Reopened',
+                                                              data: 
+                                                              
+                                                              [
+                                                                <?php
+
+                                                                $view_creates = mysqli_query($connection,"SELECT DISTINCT day(docu_tr_his_timestamp) as day FROM `t_document_track_history` WHERE docu_tr_his_reopenedby = '$userID' 
+                                                                                             and (MONTH(docu_tr_his_timestamp) = MONTH(CURRENT_TIMESTAMP)
+                                                                                             AND YEAR(docu_tr_his_timestamp) = YEAR(CURRENT_TIMESTAMP))
+                                                                                             ORDER BY docu_tr_his_timestamp ");
+                                                                while($row_speeds = mysqli_fetch_assoc($view_creates))
+                                                                  {
+                                                                    $days = $row_speeds['day'];
+                                                                    $view_create2 = mysqli_query($connection,"SELECT DISTINCT docu_tr_his_ticket_no FROM `t_document_track_history`                                        WHERE docu_tr_his_reopenedby = '$userID' 
                                                                                                               and day(docu_tr_his_timestamp) = '$days'");
                                                                                 $total_count2 = mysqli_num_rows($view_create2);
                                                                                 echo $total_count2.',';

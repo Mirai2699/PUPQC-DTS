@@ -3,6 +3,7 @@
         <th>Employee</th>
         <th>Created</th>
         <th>Transferred</th>
+        <th>Received</th>
         <th>Closed</th>
         <th>Re-Opened</th>
         <th>Service Time</th>
@@ -45,6 +46,20 @@
                                                                     GROUP BY docu_tr_his_ticket_no");
                 $get_transferred = mysqli_num_rows($view_transferred);
 
+
+                //For received
+                   $view_received = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
+                                                                       INNER JOIN  `t_accounts` AS ACC 
+                                                                       ON ACC.acc_ID = HISDOCU.docu_tr_his_receiver
+                                                                       INNER JOIN `t_employees` AS EMP
+                                                                       ON ACC.acc_empID = EMP.emp_ID
+                                                                       INNER JOIN `r_office` AS OFF 
+                                                                       ON EMP.emp_office = OFF.office_ID
+                                                                       WHERE EMP.emp_office = '$receiving_office'
+                                                                       and ACC.acc_ID = '$userID'
+                                                                       GROUP BY docu_tr_his_ticket_no");
+                   $get_received = mysqli_num_rows($view_received);
+
              //closed
                  $view_closed = mysqli_query($connection, "SELECT * FROM `t_document_track_history` AS HISDOCU 
                                                                     INNER JOIN  `t_accounts` AS ACC 
@@ -72,7 +87,8 @@
                                                                     GROUP BY docu_tr_his_ticket_no");
                 $get_reopen = mysqli_num_rows($view_reopen);
 
-
+                include("get_user_performance.php");
+                include("get_response_time.php");
 
              //display                             
                 echo
@@ -81,8 +97,12 @@
                         <td>'.$compname.'</td>
                         <td>'.$get_create.'</td>
                         <td>'.$get_transferred.'</td>
-                        <td>'.$get_closed.'</td>
+                        <td>'.$get_received.'</td> 
+                        <td>'.$get_closed.'</td> 
                         <td>'.$get_reopen.'</td>
+                        <td>'.$res_ave.'</td>
+                        <td>'.$DA_RT_average.'</td> 
+                        
                     </tr>
                 ';
             
