@@ -6,8 +6,8 @@
             $start = new datetime($_POST['start_date']);
             $end = new datetime($_POST['end_date']);
 
-            $nf_start = $start->format('F d, Y');
-            $nf_end = $end->format('F d, Y');
+            $nf_start = $start->format('F Y');
+            $nf_end = $end->format('F Y');
             echo
             '
                 <p style="font-size:18px; color: black">
@@ -27,30 +27,7 @@
     ?>
 </div>
 
-<div id="printablearea">
-    <div class="" style="display: none">
-         <img  src="../../../resources-web/images/QCheader.png" style="height:40%; width:60%; "> 
-    </div>
-    <div style="margin-top: 5px; margin-left: 15px; display: none">
-        <div style="text-align: left; ">
-            <h5 style="font-size: 14px; text-align: right">Report No. UPR-<?php echo date('Ymd'); ?> </h5>
-            <h5 style="font-size: 14px">Date Generated: <br>
-                <?php echo date('F d, Y'); ?>
-            </h5>
-            <center>
-                <b style="font-size: 20px">User's Performance Report</b><br>
-            </center>
-            <h5>Report Description:</h5> 
-            <p style="text-align: justify; font-size: 14px">   &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp
-                                This report shows the personal/employee details of the user, and the general evaluation of the user's performance in using the system.
-            </p>
-           
-        </div>
-        <h5>Table(s) Description:</h5> 
-            <p style="text-align: justify; font-size: 14px">   &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp
-                                The first table below shows the personal/employee details of the user, and the second table shows the general evaluation of the user's performance in using the system.Note that the higher the value of the Total Average Response Time Percentage, means the processing of documents is slow and not consistent.
-            </p>
-    </div>
+    
     <div class="col-md-12">
         <div class="panel-heading" style="background-color: #404040; color: white; margin-top: 1px">
             <h4 style="margin-top: 5px">User's Total of Transacted Document Tickets</h4>
@@ -452,4 +429,3 @@
 
         
     </div>
-</div>
