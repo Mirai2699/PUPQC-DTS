@@ -4724,7 +4724,7 @@ Input icons
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: #6e6e6e;
 }
 .nav > li.disabled > a {
   color: #777777;

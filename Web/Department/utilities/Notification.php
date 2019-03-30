@@ -54,7 +54,7 @@
                                                               }
                                                          ?>
                                                         <img src="../../../resources-web/images/PUPlogo.png" alt="User Image" class="img-circle"/>
-                                                        <span class="hidden-xs">
+                                                        <span class="hidden-xs" style="color: white">
                                                            <?php echo $compname; ?>
                                                         </span>&nbsp;
                                                         <b class="caret"></b>
