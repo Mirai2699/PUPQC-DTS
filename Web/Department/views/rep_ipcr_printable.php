@@ -11,10 +11,9 @@
 </style>
 
 
-<div style="display: none">
-  <div id="printable">
+  <div id="printable" style="display: none">
       <div class="">
-            <!-- <img  src="../../../resources-web/images/QCheader.png" style="height:40%; width:60%; ">  -->
+           <img  src="../../../resources-web/images/QCheader.png" style="height:40%; width:60%; "> 
       </div>
       <div style="margin-top: 5px; margin-left: 15px;">
           <div style="text-align: left; ">
@@ -27,20 +26,48 @@
               </center>
               <h5>Report Description:</h5> 
               <p style="text-align: justify; font-size: 14px">   &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp
-                                  This report shows the personal/employee details of the user, and the general evaluation of the user's performance in using the system.
+                                  This report shows the dividual Employee's Performance Commitment and Review in terms of using the system.
               </p>
              
           </div>
           <h5>Table(s) Description:</h5> 
               <p style="text-align: justify; font-size: 14px">   &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp
-                                  The first table below shows the personal/employee details of the user, and the second table shows the general evaluation of the user's performance in using the system.Note that the higher the value of the Total Average Response Time Percentage, means the processing of documents is slow and not consistent.
+                                  The table below shows the total count of transactions per document ticket: Created, Transferred, Received, Closed and Reopened, and also shows the breakdown of the transactions done per document type.  Note that details in this report may be filtered according to the specifications and preferences set by the report generator, preferrably by date.
               </p>
       </div>
+      <div class="col-md-12" style="margin-top: 10px">
+          <?php 
+              if(isset($_POST['filter_date']))
+              {
+
+                  $start = new datetime($_POST['start_date']);
+                  $end = new datetime($_POST['end_date']);
+
+                  $nf_start = $start->format('F Y');
+                  $nf_end = $end->format('F Y');
+                  echo
+                  '
+                      <p style="font-size:18px; color: black">
+                          Date Range from <b>'.$nf_start.'</b> to <b>'.$nf_end.'</b>.
+                      </p>
+                  ';
+              }
+              else
+              {
+                  echo
+                  '
+                      <p style="font-size:18px; color: black">
+                          Date Range from the beginning of transactions up to now.
+                      </p>
+                  ';
+              }
+          ?>
+      </div>
+
+          
       <div class="col-md-12">
-          <div class="panel-heading" style="background-color: #404040; color: white; margin-top: 1px">
-              <h4 style="margin-top: 5px">User's Total of Transacted Document Tickets</h4>
-              <div class="row" style="padding: 1px; background-color: white; margin-bottom: 5px"></div>
-          </div>
+              <b><i><h4 style="margin-top: 5px; ">User's Total of Transacted Document Tickets</h4></i></b>
+              <hr>
           <br>
           <table class="table table-condensed mbn" style="font-size: 15px; width: 100%;">
               <thead>
@@ -49,7 +76,7 @@
                   <th>Transferred</th>
                   <th>Received</th>
                   <th>Closed</th>
-                  <th>Re-Opened</th>
+                  <th>Re-Opened</th>  
               </thead>
               <tbody>
                   <?php
@@ -245,7 +272,7 @@
                               '
                                   <tr>
                                       <td style="font-size: 18px; text-align:center">'.$compname.'</td>
-                                      <td style="text-align:center">'.$get_create.'</td>
+                                      <td style="text-align:center">'.$get_create.'</td>  
                                       <td style="text-align:center">'.$get_transferred.'</td>
                                       <td style="text-align:center">'.$get_received.'</td> 
                                       <td style="text-align:center">'.$get_closed.'</td> 
@@ -266,11 +293,9 @@
       </div>
 
 
-      <div class="col-md-12" style="margin-top: 10px">
-          <div class="panel-heading" style="background-color: #404040; color: white; margin-top: 1px">
-              <h4 style="margin-top: 5px">Breakdown Per Document Type</h4>
-              <div class="row" style="padding: 1px; background-color: white; margin-bottom: 5px"></div>
-          </div>
+      <div class="col-md-12" style="margin-top: 20px">
+              <b><i><h4 style="margin-top: 10px; ">Breakdown Per Document Type</h4></i></b>
+              <hr>
           <br>
           <table class="table table-condensed mbn" style="font-size: 15px; width: 100%">
               <thead>
@@ -437,5 +462,4 @@
 
           
       </div>
-  </div>
 </div>

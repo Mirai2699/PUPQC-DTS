@@ -21,7 +21,8 @@
                                                      and SRC.source_ID = DOCU.docu_tr_sourcetype
                                                      and PRIO.priority_ID = DOCU.docu_tr_prioritytype
                                                      WHERE DOCU.docu_tr_sender = '$userID' 
-                                                       and DOCU.docu_tr_status = 'OPEN' ");
+                                                       and DOCU.docu_tr_status = 'OPEN' 
+                                                     ORDER BY DOCU.docu_tr_ticket_no DESC");
             if(mysqli_num_rows($view_query) > 0)
             {
                while($row = mysqli_fetch_array($view_query))
@@ -120,7 +121,8 @@
                                                      and SRC.source_ID = DOCU.docu_tr_sourcetype
                                                      and PRIO.priority_ID = DOCU.docu_tr_prioritytype
                                                      WHERE DOCU.docu_tr_createdby = '$userID' 
-                                                       and DOCU.docu_tr_status = 'OPEN' ");
+                                                       and DOCU.docu_tr_status = 'OPEN'
+                                                    ORDER BY DOCU.docu_tr_ticket_no DESC ");
             if(mysqli_num_rows($view_query) > 0)
             {
                while($row = mysqli_fetch_array($view_query))
@@ -162,19 +164,26 @@
                                                                    INNER JOIN `r_office` AS OFF
                                                                    ON EMP.emp_office = OFF.office_ID
                                                            WHERE EMP.emp_ID = '$docu_tr_sender'");
-                   while($sender_row = mysqli_fetch_array($getsender))
+                   if(mysqli_num_rows($getsender) > 0)
                    {
+                     while($sender_row = mysqli_fetch_array($getsender))
+                     {
 
-                     //Office Naming
-                     $sender_office_name = $sender_row["office_name"];
+                       //Office Naming
+                       $sender_office_name = $sender_row["office_name"];
 
-                     //Employee Naming
-                     $sender_fname = $sender_row["emp_firstname"];
-                     $sender_lname = $sender_row["emp_lastname"];
-                     $sender_position = $sender_row["emp_position"];
-                     $sender_compname = $sender_fname.' '.$sender_lname;
-                     $sender_disp = $sender_compname.', '.$sender_position;
-                   }
+                       //Employee Naming
+                       $sender_fname = $sender_row["emp_firstname"];
+                       $sender_lname = $sender_row["emp_lastname"];
+                       $sender_position = $sender_row["emp_position"];
+                       $sender_compname = $sender_fname.' '.$sender_lname;
+                       $sender_disp = $sender_compname.', '.$sender_position;
+                     }
+                    }
+                    else
+                    {
+                      $sender_compname = 'Not yet Transferred';
+                    }
                      echo
                      '<tr class="gradeX">
                         <td style="display: none"> '.$docu_tr_ID.' </td>

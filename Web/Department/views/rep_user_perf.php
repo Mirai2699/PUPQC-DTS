@@ -165,10 +165,10 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h5 style="font-weight: bold">Total Average Response Time Percentage in Processing Documents:</h5>
+                                            <h5 style="font-weight: bold">Total Average Number Rating (Response Time):</h5>
                                         </td>
                                         <td>
-                                            <h5><?php echo $res_ave.'%'; ?></h5>
+                                            <h5><?php echo $ave_num_rate; ?></h5>
                                         </td>
                                     </tr>
                                     <tr>
@@ -176,7 +176,7 @@
                                             <h5 style="font-weight: bold">Overall Performance Evaluation:</h5>
                                         </td>
                                         <td>
-                                            <h5><?php echo $eval_stmnt; ?></h5>
+                                            <h5><?php echo  $numr_eval_stmnt; ?></h5>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2019 at 08:30 AM
+-- Generation Time: Apr 04, 2019 at 09:40 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -235,7 +235,11 @@ INSERT INTO `t_document_track` (`docu_tr_ID`, `docu_tr_ticket_no`, `docu_tr_doct
 (9, '201900009', 2, 1, '', 1, '', 3, NULL, 'For testing', 'test', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-23', '16:22:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
 (10, '201900010', 4, 1, '', 1, '4', 3, 9, 'For testing', '33323', NULL, 'papirma', 'Edgardo S. delmo', 11, NULL, 11, NULL, NULL, '1', '2019-03-23', '16:23:42', '2019-03-27', '13:25:00', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
 (11, '201900011', 3, 1, '', 2, '', 3, NULL, 'New sample', 'new sample', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:24:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
-(12, '201900012', 3, 2, 'PUP MAIN', 1, '', 3, NULL, 'External document', 'external', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:26:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1');
+(12, '201900012', 3, 2, 'PUP MAIN', 1, '', 3, NULL, 'External document', 'external', NULL, NULL, 'Edgardo S. delmo', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-27', '13:26:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
+(13, '201900013', 2, 2, 'PUP MAIN', 1, '', 3, NULL, 'New sample', 'sample', NULL, NULL, 'Demelyn Monzon', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-29', '12:38:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1'),
+(14, '201900014', 1, 1, '', 1, '0', 7, 5, 'Sample', 'Sample', NULL, 'For evaluation', 'De', 8, 6, 8, NULL, NULL, '0', '2019-04-04', '14:25:41', '2019-04-04', '14:27:21', '2019-04-04', '15:39:35', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'0', b'1'),
+(15, '201900015', 3, 1, '', 2, '0', 7, 5, 'New sample', 'sasasa', NULL, 'Eto pa', 'Demelyn Monzon', 8, NULL, 8, NULL, NULL, '1', '2019-04-04', '14:54:50', '2019-04-04', '15:03:59', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1'),
+(16, '201900016', 3, 1, '', 1, '', 7, NULL, 'For testing', 'aa', NULL, NULL, 'Demelyn Monzon', 8, NULL, NULL, NULL, NULL, NULL, '2019-04-04', '15:35:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1');
 
 -- --------------------------------------------------------
 
@@ -322,7 +326,14 @@ INSERT INTO `t_document_track_history` (`docu_tr_his_ID`, `docu_tr_his_ticket_no
 (33, '201900007', 1, 1, '', 1, '4', 3, 5, 'For testing', 'test', NULL, 'for test', 'Edgardo S. delmo', 11, 6, 11, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-23', '16:25:01', '2019-03-27', '13:33:32', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-27 13:33:32'),
 (34, '201900007', 1, 1, '', 1, '5', 3, 10, 'For testing', 'test', NULL, 'for transfer', 'Edgardo S. delmo', 11, NULL, 6, NULL, NULL, '1', '2019-03-22', '15:57:59', '2019-03-27', '13:34:14', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-03-27 13:34:14'),
 (35, '201900003', 1, 1, '', 1, '5', 3, 5, 'For testing', 'for testing', NULL, 'for testing', 'Demelyn Monzon', 4, 6, 4, NULL, NULL, '1', '2019-03-22', '10:50:55', '2019-03-22', '10:51:47', '2019-03-27', '13:35:01', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-03-27 13:35:01'),
-(36, '201900003', 1, 1, '', 1, '', 3, NULL, 'For testing', 'for testing', 'Evaluated', NULL, 'Demelyn Monzon', 4, NULL, NULL, 6, NULL, '0', '2019-03-22', '10:50:55', NULL, NULL, NULL, NULL, '2019-03-27', '13:35:10', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'1', b'1', '2019-03-27 13:35:10');
+(36, '201900003', 1, 1, '', 1, '', 3, NULL, 'For testing', 'for testing', 'Evaluated', NULL, 'Demelyn Monzon', 4, NULL, NULL, 6, NULL, '0', '2019-03-22', '10:50:55', NULL, NULL, NULL, NULL, '2019-03-27', '13:35:10', NULL, NULL, 'CLOSED', 'NO', 'Closed', b'1', b'1', '2019-03-27 13:35:10'),
+(37, '201900013', 2, 2, 'PUP MAIN', 1, '', 3, NULL, 'New sample', 'sample', NULL, NULL, 'Demelyn Monzon', 11, NULL, NULL, NULL, NULL, NULL, '2019-03-29', '12:38:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-03-29 12:38:50'),
+(38, '201900014', 1, 1, '', 1, '', 7, NULL, 'Sample', 'Sample', NULL, NULL, 'De', 8, NULL, NULL, NULL, NULL, NULL, '2019-04-04', '14:25:41', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-04-04 14:25:41'),
+(39, '201900014', 1, 1, '', 1, '0', 7, 5, 'Sample', 'Sample', NULL, 'For evaluation', 'De', 8, NULL, 8, NULL, NULL, '1', '2019-04-04', '14:25:41', '2019-04-04', '14:27:21', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-04-04 14:27:21'),
+(40, '201900015', 3, 1, '', 2, '', 7, NULL, 'New sample', 'sasasa', NULL, NULL, 'Demelyn Monzon', 8, NULL, NULL, NULL, NULL, NULL, '2019-04-04', '14:54:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-04-04 14:54:50'),
+(41, '201900015', 3, 2, '', 2, '0', 7, 5, 'New sample', 'sasasa', NULL, 'Eto pa', 'Demelyn Monzon', 8, NULL, 8, NULL, NULL, '1', '2019-04-04', '14:54:50', '2019-04-04', '15:03:59', NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Reviewed and Transferred', b'1', b'1', '2019-04-04 15:03:59'),
+(42, '201900016', 3, 1, '', 1, '', 7, NULL, 'For testing', 'aa', NULL, NULL, 'Demelyn Monzon', 8, NULL, NULL, NULL, NULL, NULL, '2019-04-04', '15:35:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Created', b'1', b'1', '2019-04-04 15:35:27'),
+(43, '201900014', 1, 1, '', 1, '0', 7, 5, 'Sample', 'Sample', NULL, 'For evaluation', 'De', 8, 6, 8, NULL, NULL, '1', '2019-04-04', '14:25:41', '2019-04-04', '14:27:21', '2019-04-04', '15:39:35', NULL, NULL, NULL, NULL, 'OPEN', 'NO', 'Received', b'1', b'1', '2019-04-04 15:39:35');
 
 -- --------------------------------------------------------
 
@@ -381,7 +392,17 @@ INSERT INTO `t_report_bug` (`rb_ID`, `rb_reporter`, `rb_desc`, `rb_timestamp`) V
 (1, 12, 'Lakihan ung \"Search\" Box - ipwesto sa ilalim ng title na Trace Document Tickets', '2019-03-06 17:51:06'),
 (2, 12, 'Kung cno nagclosed, sxa lang dapat ang pwedeng mag re-open', '2019-03-06 17:51:41'),
 (3, 12, 'anong purpose ng \"View Open Ticket\" under Document Tracking?', '2019-03-06 18:33:02'),
-(4, 11, 'error in updating the complex part to simple.', '2019-03-22 13:39:28');
+(4, 11, 'rediscuss natin ung dashboard :)', '2019-03-21 10:29:35'),
+(5, 11, 'transferred instead of forwarded ', '2019-03-21 10:30:21'),
+(6, 11, 'Signatory only', '2019-03-21 10:31:05'),
+(7, 11, 'Ticket Received (erase by Staff)', '2019-03-21 10:35:46'),
+(8, 11, 'once transferred to another office.. hindi na sxa pwede iclose den', '2019-03-21 10:41:51'),
+(9, 11, 'simple not complex (tracing)', '2019-03-21 15:10:17'),
+(10, 11, 'dashboard, with dates , total transaction per performance, change the document created (department user)', '2019-03-21 15:11:03'),
+(11, 11, 'contradicting response time and overall performance in processing documents in dashboard (user department)', '2019-03-21 15:11:57'),
+(12, 11, 'add ticket (change signatories to signatory)', '2019-03-21 15:13:04'),
+(13, 11, 'note: add by topics table in the dashboard in the performance chart of the user (department)', '2019-03-21 15:14:21'),
+(14, 11, 'add per office, staff, and topics (user dashboard)', '2019-03-21 15:15:37');
 
 -- --------------------------------------------------------
 
@@ -444,7 +465,19 @@ INSERT INTO `t_users_log` (`log_No`, `log_userID`, `log_usertype`, `log_datestam
 (40, 1, 1, '2019-03-27', '13:37:54'),
 (41, 11, 2, '2019-03-27', '13:39:37'),
 (42, 4, 2, '2019-03-27', '14:09:37'),
-(43, 11, 2, '2019-03-27', '14:31:12');
+(43, 11, 2, '2019-03-27', '14:31:12'),
+(44, 11, 2, '2019-03-27', '18:34:14'),
+(45, 11, 2, '2019-03-28', '07:31:11'),
+(46, 11, 2, '2019-03-29', '11:44:08'),
+(47, 11, 2, '2019-03-29', '12:32:34'),
+(48, 11, 2, '2019-03-30', '16:22:19'),
+(49, 11, 2, '2019-04-02', '11:04:51'),
+(50, 11, 2, '2019-04-03', '11:13:08'),
+(51, 11, 2, '2019-04-04', '11:40:27'),
+(52, 11, 2, '2019-04-04', '13:23:35'),
+(53, 1, 1, '2019-04-04', '14:24:54'),
+(54, 8, 2, '2019-04-04', '14:25:18'),
+(55, 6, 2, '2019-04-04', '15:39:25');
 
 --
 -- Indexes for dumped tables
@@ -582,13 +615,13 @@ ALTER TABLE `t_accounts`
 -- AUTO_INCREMENT for table `t_document_track`
 --
 ALTER TABLE `t_document_track`
-  MODIFY `docu_tr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `docu_tr_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `t_document_track_history`
 --
 ALTER TABLE `t_document_track_history`
-  MODIFY `docu_tr_his_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `docu_tr_his_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `t_employees`
@@ -600,13 +633,13 @@ ALTER TABLE `t_employees`
 -- AUTO_INCREMENT for table `t_report_bug`
 --
 ALTER TABLE `t_report_bug`
-  MODIFY `rb_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rb_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `t_users_log`
 --
 ALTER TABLE `t_users_log`
-  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `log_No` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- Constraints for dumped tables
