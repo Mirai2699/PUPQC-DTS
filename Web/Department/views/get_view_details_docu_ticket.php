@@ -66,6 +66,8 @@
                     $docu_tr_time_sent = new datetime($row["docu_tr_time_sent"]);
                     $date_sent = $docu_tr_date_sent->format('F d, Y');
                     $time_sent = $docu_tr_time_sent->format('h:i a');
+                    $date_sent_notnew = $docu_tr_date_sent->format('Y-m-d');
+                    $time_sent_notnew = $docu_tr_time_sent->format('H:i:s');
 
                     $docu_date_reopen = new datetime($row["docu_tr_date_reopened"]);
                     $docu_time_reopen = new datetime($row["docu_tr_time_reopened"]);

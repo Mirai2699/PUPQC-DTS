@@ -357,6 +357,7 @@
                                            if(!empty($rowsent['docu_tr_date_sent']))
                                            {
                                               echo '
+                                              <input type="hidden" name="docu_tr_date_sent" value="'.$date_sent_notnew.'" />
                                               <div class="col-md-12" style="margin-bottom: 10px">
                                                  <label><b>Last Sent By:</b></label>
                                                  <input type="text" class="form-control" name="docu_sender" 
@@ -366,7 +367,7 @@
                                                  <label><b>Date Last Sent:</b></label>
                                                  <input type="text" class="form-control" name="docu_date_sent" 
                                                  value="'.$DTsent.'" readonly/>
-                                              </div>
+                                              </div> 
                                               <div class="col-md-12" style="margin-bottom: 10px">
                                                  <label><b>Last Remarks of Sender:</b></label>
                                                  <input type="text" class="form-control" name="docu_last_rem" 

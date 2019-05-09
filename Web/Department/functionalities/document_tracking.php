@@ -4,7 +4,7 @@
 
 
 	if(isset($_POST['acc_docu_ticket']))
-	{ 
+	{  
 	      
 	      $userID = $_POST['docu_accID'];
 
@@ -135,6 +135,26 @@
 	      $daysLeft = abs(strtotime($curDate) - strtotime($docu_tr_date_create));
 	      $date_processed = $daysLeft/(60 * 60 * 24);
 
+
+	      if(!empty($_POST['docu_tr_date_sent']))
+	      {
+	          $docu_tr_date_sent = $_POST['docu_tr_date_sent'];	
+	          $daysLeft_sent = 0;
+	          $curDate_sent = date('Y-m-d');
+	          $daysLeft_sent = abs(strtotime($curDate_sent) - strtotime($docu_tr_date_sent));
+	          $date_processed_sent = $daysLeft_sent/(60 * 60 * 24);
+	          echo $date_processed_sent;
+	      }
+	      else
+	      {
+	          $daysLef_sent = 0;
+	          $curDate_sent = date('Y-m-d');
+	          $daysLeft_sent = abs(strtotime($curDate_sent) - strtotime($docu_tr_date_create));
+	          $date_processed_sent = $daysLeft_sent/(60 * 60 * 24);
+
+	      }
+
+
 	      if(!empty($_POST['docu_ext_source']))
 	      {
 	         $docu_ext_source = $_POST['docu_ext_source'];
@@ -192,7 +212,7 @@
 		  		                                     		 '$docu_sourcetypeID', 
 		  		                                     		 '$docu_ext_source', 
 		  		                                     		 '$docu_priotypeID', 
-		  		                                			 '$date_processed',
+		  		                                			 '$date_processed_sent',
 		  		                                     		 '$docu_off_fr',
 		  		                                     		 '$docu_new_office_to',
 		  		                                     		 '$docu_subject', 
@@ -1089,10 +1109,11 @@
 
 	        }
 
-	        $daysLeft = 0;
-	        $curDate = date('Y-m-d');
-	        $daysLeft = abs(strtotime($curDate) - strtotime($date_newsent));
-	        $date_processed = $daysLeft/(60 * 60 * 24);
+	        // $daysLeft = 0;
+	        // $curDate = date('Y-m-d');
+	        // $daysLeft = abs(strtotime($curDate) - strtotime($date_newsent));
+	        // $date_processed = $daysLeft/(60 * 60 * 24);
+	        $date_processed = 0;
 
 	        //Office Created At
 	        $getoffice_creator = mysqli_query($connection, "SELECT * FROM `t_employees` AS EMP 
