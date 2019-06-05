@@ -100,7 +100,7 @@
                         <td>'.$get_received.'</td> 
                         <td>'.$get_closed.'</td> 
                         <td>'.$get_reopen.'</td>
-                        <td>'.$res_ave.'</td>
+                        <td>'.$ave_res_cdp.'</td>
                         <td>'.$DA_RT_average.'</td> 
                         
                     </tr>
@@ -108,6 +108,6 @@
             
             
         ?>
-        
+         
     </tbody>
 </table>
